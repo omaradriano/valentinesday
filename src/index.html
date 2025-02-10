@@ -41,12 +41,12 @@
         for (let i = 1; i <= 12; i++) {
             sadFrames.push(`./frames/sadGifs/frame_${i}.png`);
         }
+        var heartFrames = [];
+        for (var i = 1; i <= 12; i++) {
+            heartFrames.push(`./frames/heart/frame_${i}.png`);
+        }
 
         function RunAnimationForHeart() {
-            var heartFrames = [];
-            for (var i = 1; i <= 12; i++) {
-                heartFrames.push(`../src/frames/heart/frame_${i}.png`);
-            }
             var x = 0;
 
             function Animate() {
