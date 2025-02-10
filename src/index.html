@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CUSTOM CSS -->
+    <link type="text/css" rel="stylesheet" href="./index.css">
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+    <title>Will you be my valentine's?</title>
+</head>
+
+<body>
+    <h1 class="title">Will you be my valentine?</h1>
+    <img class="heart" src="../src/frames/heart/frame_1.png" alt="frame_1">
+
+    <div class="answers">
+        <button class="answerYes" onclick="AnswerYes()">Yes :D</button>
+        <button class="answerNo" onclick="AnswerNo()">No D:</button>
+        <h2 class="finalRes">Ya sabía que dirías que sí, te amo ❤️</h3>
+    </div>
+
+    <img class="monito" src="./frames/monitos/happy.png" alt="monito">
+
+    <script>
+        let monito = document.querySelector(".monito");
+        let buttonNo = document.querySelector(".answerNo");
+        let finalRes = document.querySelector(".finalRes");
+        let buttonNoWidth = 150
+        let buttonNoFontSize = 16
+
+        // let happyFrames = [];
+        // for (let i = 1; i <= 12; i++) {
+        //     happyFrames.push(`./frames/happyGifs/frame_${i}.png`);
+        // }
+
+        let sadFrames = [];
+        for (let i = 1; i <= 12; i++) {
+            sadFrames.push(`./frames/sadGifs/frame_${i}.png`);
+        }
+
+        function RunAnimationForHeart() {
+            var heartFrames = [];
+            for (var i = 1; i <= 12; i++) {
+                heartFrames.push(`../src/frames/heart/frame_${i}.png`);
+            }
+            var x = 0;
+
+            function Animate() {
+                document.querySelector(".heart").src = heartFrames[x];
+                x++;
+                if (x >= heartFrames.length) {
+                    x = 0;
+                }
+            }
+            setInterval(Animate, 150);
+        }
+
+        function AnswerNo(){
+            monito.src = `./frames/sadGifs/sad_${Math.floor(PickRandom())}.gif`;
+            monito.style.display = "block";
+            buttonNoWidth -= 10;
+            buttonNoFontSize -= 1;
+            if(buttonNoWidth < 80){
+                buttonNo.style.display = "none";
+            }
+            buttonNo.style.fontSize = `${buttonNoFontSize}px`;
+            buttonNo.style.width = `${buttonNoWidth}px`;
+            console.log("Sup nigg");
+            // document.querySelector(".answerNo").style.transfo
+        }
+        function AnswerYes(){
+            monito.src = `./frames/happyGifs/happy_${Math.floor(PickRandom())}.gif`;
+            monito.style.display = "block";
+            buttonNo.style.display = "none";
+            finalRes.style.display = 'block'
+
+        }
+
+        function PickRandom(){
+            return Math.random() * (8 - 1) + 1;
+        }
+
+        RunAnimationForHeart();
+    </script>
+</body>
+
+</html>
